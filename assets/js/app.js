@@ -17,7 +17,7 @@ const highlightMenu = () => {
 	const aboutMenu = document.querySelector("#about-page");
 	const services = document.querySelector("#services-page");
 	let scrollPos = window.scrollY;
-	console.log("ScrollPos:", scrollPos);
+	// console.log("ScrollPos:", scrollPos);
 
 	// Add "highlight" class to menu items
 	if (window.innerWidth > 960 && scrollPos <= 100) {
@@ -54,3 +54,30 @@ const hideMobileMenu = () => {
 
 menuLinks.addEventListener("click", hideMobileMenu);
 navLogo.addEventListener("click", hideMobileMenu);
+
+/**SUBMIT FORM */
+const form = document.getElementById("form-field");
+form.onsubmit = async function (e) {
+	e.preventDefault();
+	const req = JSON.stringify({
+		email: form.email.value,
+		name: form.name.value,
+		// phone: form.phone.value,
+		subject: form.subject.value,
+		message: form.message.value
+	});
+	const response = await fetch('https://ugee-forms.herokuapp.com/contact', {
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		body: req,
+	})
+
+	if (response.status == 200) {
+		const result = await response.json();
+		alert(result.message)
+	} else {
+		const { message } = await response.json();
+		alert(message)
+	}
+	this.reset();
+}
