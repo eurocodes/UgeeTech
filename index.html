@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EUTechsoft</title>
+    <title>Eutek</title>
+    <link rel="icon" type="image/png" href="/assets/img/eutek.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
@@ -18,7 +19,7 @@
     <nav class="navbar">
         <div class="navbar__container">
             <a href="#home" id="navbar__logo">
-                <img src="/assets/img/eutechsoft.png" alt="EUTechsoft Consulting">
+                <img src="/assets/img/eutek.png" alt="EUTek Consulting">
             </a>
             <div class="navbar__toggle" id="mobile-menu">
                 <span class="bar"></span>
@@ -47,7 +48,7 @@
             <h1 class="euro__heading">We are glad your are here</h1>
             <p class="euro__description">Let's take your business to the world</p>
             <button class="main__btn">
-                <a href="/about.html">Explore</a>
+                <a href="/about.html#explore">Explore</a>
             </button>
         </div>
     </div>
@@ -62,7 +63,8 @@
             </div>
             <div class="main__content">
                 <h1>Who we are</h1>
-                <h2>We are Technology Consulting Specialists focused on bringing Businesses to the Online space</h2>
+                <h2>We are Software development & Consulting Specialists focused on bringing Businesses to the Online
+                    space</h2>
                 <p>We help business owners increase their revenue by giving them access to more customers and
                     convenience online and offline business environment. All you need to do
                     is tell us what you want and leave the rest to us.</p>
@@ -156,7 +158,7 @@
 
     <!--===== CONTACT =====-->
     <div class="contact section" id="contact">
-        <h2 class="section-title">Send A Message</h2>
+        <h2 class="section-title">Send An Enquiry</h2>
 
         <div class="contact__container bd-grid">
             <form id="form-field" class="contact__form">
@@ -175,21 +177,26 @@
         <section class="social__media">
             <div class="social__media--wrap">
                 <div class="footer__logo">
-                    <a href="/" id="footer__logo">EUTechsoft</a>
+                    <a href="/" id="footer__logo">Eutek Software Solutions</a>
                 </div>
-                <p class="website__rights">&copy; EUTechsoft 2020. All rights reserved</p>
+                <p class="website__rights" id="rights"></p>
                 <div class="social__icons">
-                    <a href="/" class="social__icon--link" target="_blank">
+                    <a href="https://facebook.com/euteksoftwares/" class="social__icon--link" target="_blank">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="/" class="social__icon--link" target="_blank">
+                    <a href="https://twitter.com/euteksoft?s=08" class="social__icon--link" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="/" class="social__icon--link" target="_blank">
+                    <a href="https://www.instagram.com/eutek.software?r=nametag" class="social__icon--link"
+                        target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="/" class="social__icon--link" target="_blank">
+                    <a href="https://www.linkedin.com/company/eutechsoft-solutions/?viewAsMember=true"
+                        class="social__icon--link" target="_blank">
                         <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:euteksoft@gmail.com" class="social__icon--link" target="_blank">
+                        <i class="fa fa-envelope-o"></i>
                     </a>
                 </div>
             </div>
@@ -197,6 +204,34 @@
     </div>
 
     <script src="/assets/js/app.js"></script>
+    <script>
+        /**SUBMIT FORM */
+        const form = document.getElementById("form-field");
+        form.onsubmit = async function (e) {
+            e.preventDefault();
+            const req = JSON.stringify({
+                email: form.email.value,
+                name: form.name.value,
+                phone: form.phone.value,
+                subject: form.subject.value,
+                message: form.message.value
+            });
+            const response = await fetch('https://ugee-forms.herokuapp.com/enquiry', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: req,
+            })
+
+            if (response.status == 200) {
+                const result = await response.json();
+                alert(result.message)
+            } else {
+                const { message } = await response.json();
+                alert(message)
+            }
+            this.reset();
+        }
+    </script>
 </body>
 
 </html>
