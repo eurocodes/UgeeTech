@@ -55,29 +55,10 @@ const hideMobileMenu = () => {
 menuLinks.addEventListener("click", hideMobileMenu);
 navLogo.addEventListener("click", hideMobileMenu);
 
-/**SUBMIT FORM */
-const form = document.getElementById("form-field");
-form.onsubmit = async function (e) {
-	e.preventDefault();
-	const req = JSON.stringify({
-		email: form.email.value,
-		name: form.name.value,
-		// phone: form.phone.value,
-		subject: form.subject.value,
-		message: form.message.value
-	});
-	const response = await fetch('https://ugee-forms.herokuapp.com/contact', {
-		method: 'POST',
-		headers: { 'content-type': 'application/json' },
-		body: req,
-	})
 
-	if (response.status == 200) {
-		const result = await response.json();
-		alert(result.message)
-	} else {
-		const { message } = await response.json();
-		alert(message)
-	}
-	this.reset();
-}
+// footer message
+const websiteRight = document.getElementById("rights");
+// const date = (new Date).toDateString();
+const year = (new Date).getFullYear();
+const rightMsg = `&copy; Euteksoft ${year}. All rights reserved`;
+websiteRight.innerHTML = rightMsg;

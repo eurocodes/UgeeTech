@@ -38,11 +38,7 @@
 }
 
 #navbar__logo {
-    background-color: #ff8177;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
     background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     display: flex;
@@ -53,15 +49,14 @@
 }
 
 #navbar__logo img {
-    /* background-color: #ff8177;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); */
     background-size: 100%;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     cursor: pointer;
+    border-radius: 10px;
     text-decoration: none;
-    height: 4.5rem;
-    width: auto;
+    height: 5rem;
+    width: 4.5rem;
 }
 
 .navbar__menu {
@@ -278,12 +273,13 @@
 
 .main__content {
     color: #fff;
+    line-height: 36px;
     width: 100%;
 }
 .main__content h1 {
     color: #a9b3c1;
     font-size: 18px;
-    line-height: 16px;
+    line-height: 36px;
     letter-spacing: 1.4px;
     margin-bottom: 16px;
 }
@@ -291,14 +287,14 @@
 .main__content h2 {
     margin-bottom: 24px;
     font-size: 48px;
-    line-height: 1.1;
+    line-height: 56px;
     color:  #f7f8fa;
 }
 
 .main__content p {
     margin-bottom:1rem;
     font-size: 18px;
-    line-height: 24px;
+    line-height: 36px;
     color: #a9b3c1;
 }
 
@@ -381,6 +377,7 @@
         letter-spacing: 1.4px;
         margin-bottom: 16px;
     }
+
 }
 
 /* Mobile Responsive */
@@ -425,7 +422,7 @@
     }
 
     .main__content {
-        text-align: center;
+        text-align: left;
         margin-bottom: 4rem;
     }
 
@@ -452,6 +449,10 @@
 
     .fa-layer-group, .fa-users {
         font-size: 4rem;
+    }
+    .main__content {
+        text-align: left;
+        margin-bottom: 4rem;
     }
 
     .main__content h1 {
@@ -556,6 +557,7 @@
     flex-direction: column;
     padding: 30px 0;
     background: #e9e7e7f8;
+    z-index: 1;
 }
 .contact__input{
     width: 100%;
@@ -572,19 +574,25 @@
     display: block;
     border: none;
     outline: none;
+    width: 30%;
     font-size: 0.938rem;
     cursor: pointer;
     margin-left: auto;
+    z-index: 3;
+    box-shadow: 0 10px 20px -5px #0E2431;
 }
 .section h2 {
     margin: 2rem 0;
 }
+.contact__form{
+    width: 100%;
+  }
 .contact__button {
     color: #fff;
 }
 @media screen and (max-width: 960px){
     .contact__form{
-      width: 360px;
+      width: 100%;
     }
     .contact__container{
       justify-items: center;
@@ -709,4 +717,10 @@
         padding: 10px;
         width: 100%;
     }
+}
+
+.my-profile-img {
+    align-self: center;
+    width: 70%;
+    border-radius: 500px!important;
 }
